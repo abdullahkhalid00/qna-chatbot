@@ -3,8 +3,12 @@ import streamlit as st
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings import HuggingFaceInstructEmbeddings
+from langchain.chat_models import ChatOpenAI
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.memory import ConversationBufferMemory
 from langchain.vectorstores import FAISS
+from langchain.chains import ConversationalRetrievalChain
+from langchain.chat_models import ChatOpenAI
 
 
 def get_pdf_text(pdf_docs):
@@ -26,22 +30,40 @@ def get_text_chunks(text):
     return chunks
 
 def get_vector_store(text_chunks):
-    embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+    embeddings = OpenAIEmbeddings()
     vector_store = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vector_store
+
+def get_conversation_chain(vector_store):
+    llm = ChatOpenAI(model="gpt-3.5-turbo")
+    memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm=llm,
+        retriever=vector_store.as_retriever(),
+        memory=memory
+    )
+    return conversation_chain
 
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title="Chat with multiple PDFs", page_icon="books")
 
-    st.header("Chat with multiple PDFs :books:")
-    st.text_input("Ask a question about your document(s).")
+    if "conversation" not in st.session_state:
+        st.session_state.conversation = None
+        
+    st.set_page_config(
+        page_title="Google Meet AI Assistant",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
+    st.header(body="Google Meet AI Assistant 🤖")
+
+    user_question = st.chat_input(placeholder="Ask a question about your meeting transcript(s).")
 
     with st.sidebar:
-        st.subheader("Your documents")
-        pdf_docs = st.file_uploader("Upload your PDFs here and click 'Process'", accept_multiple_files=True)
-        
+        st.subheader("Your transcript(s)")
+        pdf_docs = st.file_uploader("Upload your transcript PDFs here and click 'Process'", accept_multiple_files=True)
+
         if st.button("Process"):
             with st.spinner("Processing"):
 
@@ -50,9 +72,12 @@ def main():
 
                 # get text chunks
                 text_chunks = get_text_chunks(raw_text)
-                
+
                 # get vector store using embeddings
                 vector_store = get_vector_store(text_chunks)
+
+                # create conversation chain
+                st.session_state.conversation = get_conversation_chain(vector_store)
 
 
 if __name__ == "__main__":
