@@ -8,40 +8,44 @@ To run this application, you need to install the required dependencies. You can 
 ```
 pip install -r requirements.txt
 ```
+or you can simply copy the following command.
+```
+pip install streamlit python-dotenv pypdf2 langchain openai tiktoken faiss-cpu
+```
 
 ## Usage
 
 To launch the application, use the following command:
 ```
-streamlit run main.py
+streamlit run app.py
 ```
 This will start the Streamlit web app, which you can access in your web browser.
 
 ## Working
 
-### PDF Processing
+## PDF and Transcript Processing
 
-The application takes one or more PDF documents as input. It extracts text from these PDFs using the PyPDF2 library. The extracted text is then split into smaller chunks for further processing.
+The application takes one or more PDF documents or meeting transcripts as input. It extracts text from these documents using the PyPDF2 library.
 
-### Text Chunking
+## Text Chunking
 
-The text is split into smaller chunks using the CharacterTextSplitter from the langchain library. This splitting is done to create more manageable units for analysis. Chunks are defined with specific sizes and an overlap to ensure that no important information is missed.
+The extracted text is then split into smaller chunks using the CharacterTextSplitter from the langchain library. This chunking is done to create more manageable units for analysis, defined with specific sizes and overlaps.
 
-### Text Embeddings
+## Text Embeddings
 
-The langchain library is used to obtain text embeddings. In this application, Hugging Face's Instruct model is used for text embeddings. The embeddings capture the semantic information in the text chunks.
+The langchain library is used to obtain text embeddings. The application uses OpenAI's Chat models for text embeddings. These embeddings capture the semantic information in the text chunks.
 
-### Vector Store
+## Vector Store
 
-The application creates a vector store using the obtained embeddings. The vector store enables efficient similarity search and retrieval of relevant information.
+The application creates a vector store using the obtained embeddings. This vector store enables efficient similarity search and retrieval of relevant information.
 
-### User Interaction
+## User Interaction
 
-Users can interact with the application by asking questions about the uploaded PDFs. The application then searches for relevant answers within the vector store based on the embeddings of the questions and the PDF content.
+Users can interact with the application by asking questions about the uploaded PDFs and transcripts. The application utilizes Conversational AI models to provide responses based on the content and context of the documents.
 
 ### Configuration
 
-The application uses environment variables to configure settings. You can set these variables in a .env file. You may need to customize the settings to suit your specific use case.
+The application uses environment variables to configure settings. You can set these variables in a `.env` file. You may need to customize the settings to suit your specific use case.
 
 ## Contributing
 
