@@ -2,6 +2,8 @@
 
 This repository contains a Streamlit web application that allows users to chat with multiple PDF documents. The application enables users to ask questions about their uploaded PDFs and provides answers based on the content of those documents.
 
+![chatbot](images/sample.PNG)
+
 ## Installation
 
 To run this application, you need to install the required dependencies. You can do this using `pip` and the provided `requirements.txt` file.
