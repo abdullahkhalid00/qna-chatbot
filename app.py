@@ -88,7 +88,7 @@ def main():
 
                 # get text chunks
                 text_chunks = get_text_chunks(raw_text)
-
+                
                 # get vector store using embeddings
                 vector_store = get_vector_store(text_chunks)
 
