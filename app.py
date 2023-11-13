@@ -8,7 +8,6 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.memory import ConversationBufferMemory
 from langchain.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
-from langchain.chat_models import ChatOpenAI
 
 
 def get_pdf_text(pdf_docs):
@@ -80,20 +79,21 @@ def main():
         st.subheader("Your transcript(s)")
         pdf_docs = st.file_uploader("Upload your transcript PDFs here and click 'Process'", accept_multiple_files=True)
 
-        if st.button("Process"):
-            with st.spinner("Processing"):
+        if pdf_docs:
+            if st.button("Process"):
+                with st.spinner("Processing"):
 
-                # get pdf text
-                raw_text = get_pdf_text(pdf_docs)
+                    # get pdf text
+                    raw_text = get_pdf_text(pdf_docs)
 
-                # get text chunks
-                text_chunks = get_text_chunks(raw_text)
-                
-                # get vector store using embeddings
-                vector_store = get_vector_store(text_chunks)
+                    # get text chunks
+                    text_chunks = get_text_chunks(raw_text)
+                    
+                    # get vector store using embeddings
+                    vector_store = get_vector_store(text_chunks)
 
-                # create conversation chain
-                st.session_state.conversation = get_conversation_chain(vector_store)
+                    # create conversation chain
+                    st.session_state.conversation = get_conversation_chain(vector_store)
 
 
 if __name__ == "__main__":
