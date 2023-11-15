@@ -1,0 +1,32 @@
+response,duration,model
+"The names of the three participants in the meeting were Ali, Zeeshan, and Ahsan.",18.34378743171692,gpt-3.5-turbo
+The topic discussed in the meeting was the recent Cricket World Cup ODI match between Pakistan and New Zealand.,8.482788324356079,gpt-3.5-turbo
+"The topic discussed in the meeting was the recent Cricket World Cup ODI match between Pakistan and New Zealand. The discussion covered a summary of the match, key points, and future strategies for Pakistan's upcoming matches in the tournament.",10.9985830783844,gpt-3.5-turbo
+New Zealand batted first in the ODI match and they scored 401 runs with a loss of 6 wickets.,9.852845907211304,gpt-3.5-turbo
+"The top-scorer for New Zealand in the ODI match was Ravindra, who scored a century.",9.405231475830078,gpt-3.5-turbo
+"In the match between Pakistan and New Zealand, Pakistan lost 1 wicket while scoring 400 runs.",16.474553108215332,gpt-3.5-turbo
+"One key moment in the match between Pakistan and New Zealand was when Waseem took two quick wickets in the middle overs. Another key moment was Fakhar Zaman's century, which stabilized Pakistan's innings.",11.843327283859251,gpt-3.5-turbo
+Pakistan won the match against New Zealand. The margin of victory was 21 runs based on the TLS method.,21.413946866989136,gpt-3.5-turbo
+"The future strategies suggested for Pakistan were to work on their middle order batting and to improve their fielding consistency, specifically reducing the number of runs given away as singles and doubles.",9.678723573684692,gpt-3.5-turbo
+Ahsan suggested that Pakistan needs to work on their middle order batting and not rely solely on Babar Azam and Shaheen Afridi in every match.,10.576761484146118,gpt-3.5-turbo
+The topic for the meeting was a discussion on the recent Cricket World Cup ODI match between Pakistan and New Zealand.,3.1382627487182617,gpt-4
+"Three individuals participated in the meeting about the recent Cricket World Cup ODI match between Pakistan and New Zealand. Their names are Ali, Zeeshan, and Ahsan.",6.515190601348877,gpt-4
+"The topic of discussion in the meeting was the recent Cricket World Cup ODI match between Pakistan and New Zealand. The discussion covered a summary of the match, key points, and future strategies for Pakistan's upcoming matches in the tournament.",6.890071630477905,gpt-4
+New Zealand batted first in the ODI match and they scored 401 runs.,5.208415269851685,gpt-4
+"The text does not provide specific information on who was the top scorer for New Zealand in the ODI match against Pakistan. However, it mentions that Ravindra scored a century and Williamson also played a great knock.",6.286495685577393,gpt-4
+Pakistan did not lose the match. They won the match by 21 runs based on the TLS method.,4.545045614242554,gpt-4
+The key moments of the recent Cricket World Cup ODI match between Pakistan and New Zealand were when Waseem took two quick wickets in the middle overs and the turning point was Fokhar Zaman's century which stabilized Pakistan's innings.,7.601230621337891,gpt-4
+Pakistan won the recent Cricket World Cup ODI match against New Zealand. The margin of victory was 21 runs based on the TLS method.,6.786321401596069,gpt-4
+The suggested future strategies for the Pakistan cricket team were to work on their middle order batting and to improve their fielding. They also suggested that they can't rely on Babar Azam and Shaheen Afridi in every match.,8.07166337966919,gpt-4
+Ahsan suggested that Pakistan needs to work on their middle order batting and that they can't rely on Babar Azam and Shaheen Afridi in every match.,5.874367475509644,gpt-4
+" According to the text, there were two participants in the meeting: Ahsan and Zeeshan.",6.00594425201416,llama-2
+" Based on the conversation provided, the topic for the meeting appears to be the recent Cricket World Cup ODI match between Pakistan and New Zealand, specifically discussing Pakistan's performance in the match and strategies for improvement moving forward.",11.091803073883057,llama-2
+" Based on the conversation provided, it seems that the meeting was about discussing the recent Cricket World Cup ODI match between Pakistan and New Zealand. The participants discussed various aspects of the match, including the teams' performances, key players, and strategies for future matches.",12.79849624633789,llama-2
+" According to the text, New Zealand batted first and scored 401 runs with a loss of 6 wickets.",7.6869797706604,llama-2
+" According to the text, the top-scorer for New Zealand was Ravindra with a century.",7.212238073348999,llama-2
+" Based on the information provided in the passage, Pakistan lost 1 wicket while scoring 400 runs, so they lost 1 run in this match.",6.321991443634033,llama-2
+" Based on the text provided, the key moments for the match were when Waseem took two quick wickets in the middle overs and Fokhar Zaman's century which stabilized Pakistan's innings.",6.914391756057739,llama-2
+" Based on the information provided in the passage, Pakistan won the match against New Zealand by 21 runs using the TLS method.",6.494124412536621,llama-2
+" According to the conversation, one strategy that was suggested for Pakistan is to work on their middle order batting and not solely rely on Babar Azam and Shaheen Afridi in every match.",6.936351537704468,llama-2
+ Ahsan suggested that Pakistan needs to work on their middle order batting and reduce their reliance on Babar Azam and Shaheen Afridi in every match.,9.291794300079346,llama-2
+ 
