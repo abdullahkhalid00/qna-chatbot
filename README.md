@@ -1,8 +1,18 @@
-# Google Meet AI Assistant
+# QnA chat-bot w/ Langchain, FAISS, LLaMa 2.0 and OpenAI
 
-This repository contains a Streamlit web application that allows users to chat with multiple PDF documents. The application enables users to ask questions about their uploaded PDFs and provides answers based on the content of those documents.
+This repository contains a Streamlit web application that allows users to chat with multiple documents. The application enables users to ask questions about their uploaded documents and provides answers based on the content of those documents.
 
-![chatbot](images/sample.PNG)
+## Google Meet AI Assistant
+
+In the current context, the application is used as an assistant for analyzing data from Google Meet meeting transcripts.
+
+![sample.png](./images/sample.png)
+
+## Evaluation
+
+The chat-bot performance is evaluated over a bunch of metrics using the `fuzzywuzzy` library and the Levenshtein distance technique to compare bot responses over different LLMs. This analysis is done in the [analysis.ipynb](./notebooks/analysis.ipynb) file.
+
+![scatter_matrix.png](./images/plots/response_scatter_matrix.png)
 
 ## Installation
 
@@ -12,42 +22,20 @@ pip install -r requirements.txt
 ```
 or you can simply copy the following command.
 ```
-pip install streamlit python-dotenv pypdf2 langchain openai tiktoken faiss-cpu
+pip install streamlit python-dotenv langchain openai tiktoken faiss-cpu
 ```
 
 ## Usage
 
-To launch the application, use the following command:
+### Setting up `.env` file
+
+In order to use the application, you have to set up your API key in the `.env-sample` file using the following command. After entering your API, rename the file to `.env`.
+
+Now you can launch the application, use the following command:
 ```
 streamlit run app.py
 ```
 This will start the Streamlit web app, which you can access in your web browser.
-
-## Working
-
-## PDF and Transcript Processing
-
-The application takes one or more PDF documents or meeting transcripts as input. It extracts text from these documents using the PyPDF2 library.
-
-## Text Chunking
-
-The extracted text is then split into smaller chunks using the CharacterTextSplitter from the langchain library. This chunking is done to create more manageable units for analysis, defined with specific sizes and overlaps.
-
-## Text Embeddings
-
-The langchain library is used to obtain text embeddings. The application uses OpenAI's Chat models for text embeddings. These embeddings capture the semantic information in the text chunks.
-
-## Vector Store
-
-The application creates a vector store using the obtained embeddings. This vector store enables efficient similarity search and retrieval of relevant information.
-
-## User Interaction
-
-Users can interact with the application by asking questions about the uploaded PDFs and transcripts. The application utilizes Conversational AI models to provide responses based on the content and context of the documents.
-
-### Configuration
-
-The application uses environment variables to configure settings. You can set these variables in a `.env` file. You may need to customize the settings to suit your specific use case.
 
 ## Contributing
 
@@ -58,15 +46,7 @@ If you'd like to contribute to this project, please follow the standard open-sou
 This project is licensed under the MIT License. You can find the full license details in the [LICENSE](LICENSE) file.
 
 ## Acknowledgments
-- Streamlit: https://streamlit.io/
-- PyPDF2: https://github.com/mstamy2/PyPDF2
-- Hugging Face Transformers: https://huggingface.co/transformers/
-- Langchain: [GitHub Repository](https://github.com/langchain-ai)
 
-## Contact
-
-If you have any questions or issues related to this project, please feel free to contact the author(s).
-
-- [Abdullah Khalid](iabdulahk@gmail.com)
-- [Dawood Ahmad Khan](dawoodk0007@gmail.com)
-- [Zeeshan Ahmed](zeeshanahmed8064@outlook.com)
+- [Chat with Multiple PDFs - Alejandro AO](https://github.com/alejandro-ao/ask-multiple-pdfs)
+- [ChatGPT Retrieval - TechLead](https://github.com/techleadhd/chatgpt-retrieval/tree/main)
+- [Using LLaMA 2.0, FAISS and LangChain for Question-Answering on Your Own Data - Murtuza Kazmi](https://medium.com/@murtuza753/using-llama-2-0-faiss-and-langchain-for-question-answering-on-your-own-data-682241488476)
