@@ -6,7 +6,7 @@ This repository contains a Streamlit web application that allows users to chat w
 
 In the current context, the application is used as an assistant for analyzing data from Google Meet meeting transcripts.
 
-![sample.png](./images/sample.png)
+![sample.png](./images/sample.PNG)
 
 ## Evaluation
 
