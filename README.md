@@ -2,15 +2,13 @@
 
 This repository contains a Streamlit web application that allows users to chat with multiple documents. The application enables users to ask questions about their uploaded documents and provides answers based on the content of those documents.
 
-## Google Meet AI Assistant
-
-In the current context, the application is used as an assistant for analyzing data from Google Meet meeting transcripts.
+In the current context, the application is used as an assistant for analyzing data from any virtual meeting transcript.
 
 ![sample.png](./images/sample.PNG)
 
 ## Evaluation
 
-The chat-bot performance is evaluated over a bunch of metrics using the `fuzzywuzzy` library and the Levenshtein distance technique to compare bot responses over different LLMs. This analysis is done in the [analysis.ipynb](./notebooks/analysis.ipynb) file.
+The chat-bot performance is evaluated over a bunch of metrics using the `thefuzz` library and the Levenshtein distance technique to compare bot responses over different LLMs. This analysis is done in the [analysis.ipynb](./notebooks/analysis.ipynb) file.
 
 ![scatter_matrix.png](./images/plots/response_scatter_matrix.png)
 
