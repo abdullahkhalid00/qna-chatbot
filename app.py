@@ -1,4 +1,4 @@
-import os, csv, time
+import os, csv, time, atexit
 import streamlit as st
 
 from dotenv import load_dotenv
@@ -10,6 +10,16 @@ from langchain.memory import ConversationBufferMemory
 from langchain.vectorstores import FAISS
 from langchain.chains import ConversationalRetrievalChain
 
+
+def process_audio_file(audio_file):
+    file_path = os.path.join("./", "uploaded_audio.mp3")
+    with open(file_path, 'wb') as result:
+        result.write(audio_file.read())
+    return file_path
+
+def delete_temp_file(file_path):
+    if file_path and os.path.exists(file_path):
+        os.remove(file_path)
 
 def get_transcript(audio_file):
     client = OpenAI()
@@ -89,27 +99,35 @@ def main():
         layout="wide",
         initial_sidebar_state="expanded"
     )
-    st.header(body="Google Meet AI Assistant 🤖")
+    st.header(body="Virtual Meeting AI Assistant 🤖")
 
-    user_question = st.chat_input(placeholder="Ask a question about your meeting.")
+    user_question = st.chat_input(placeholder="Ask a question about your meeting(s).")
     if user_question:
         handle_user_input(user_question)
 
     with st.sidebar:
         st.subheader("Your meeting(s)")
-        audio_file = st.file_uploader("Upload your meeting audio here and click 'Process'", accept_multiple_files=False, type=["mp3", "wav"])
+        audio_files = st.file_uploader("Upload your meeting audio(s) here and click 'Process'", accept_multiple_files=True, type=["mp3"])
 
-        if audio_file:
-            filename = os.path.join("./audio", audio_file.name)
-            
+        if audio_files:
+            file_paths = []
+            for audio_file in audio_files:
+                file_paths.append(process_audio_file(audio_file))
+
             if st.button("Process"):
                 with st.spinner("Processing"):
 
-                    # get meeting transcript
-                    transcript = get_transcript(audio_file=filename)
+                    # get combined transcript
+                    transcript = []
+                    for file_path in file_paths:
+                        transcript.append(get_transcript(file_path))
+                    
+                    # delete local copies
+                    for file_path in file_paths:
+                        delete_temp_file(file_path)
 
                     # get text chunks
-                    text_chunks = get_text_chunks(transcript)
+                    text_chunks = get_text_chunks("".join(transcript))
                     
                     # get vector store using embeddings
                     vector_store = get_vector_store(text_chunks)
