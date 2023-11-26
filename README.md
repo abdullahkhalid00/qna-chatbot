@@ -10,17 +10,25 @@ In the current context, the application is used as an assistant for analyzing da
 
 The chat-bot performance is evaluated over a bunch of metrics using the `thefuzz` library and the Levenshtein distance technique to compare bot responses over different LLMs. This analysis is done in the [analysis.ipynb](./notebooks/analysis.ipynb) file.
 
-![scatter_matrix.png](./images/plots/response_scatter_matrix.png)
-
 ## Installation
+
+### Setting up a virtual environment
+
+Before installing necessary libraries, it is convenient to set up an isolated python environment for developemnt. To do that, navigate to your project directory and run the following command in terminal.
+
+```
+python -m venv env
+```
+
+Now that our virtual environment has successfully been created, we have to activate it. That can be done with the following command.
+
+```
+venv\Scripts\activate
+```
 
 To run this application, you need to install the required dependencies. You can do this using `pip` and the provided `requirements.txt` file.
 ```
 pip install -r requirements.txt
-```
-or you can simply copy the following command.
-```
-pip install streamlit python-dotenv langchain openai tiktoken faiss-cpu
 ```
 
 ## Usage
